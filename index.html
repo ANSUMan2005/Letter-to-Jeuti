@@ -3,147 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For Jeuti 💖</title>
+  <title>Jeuti K Kio Bhal Lage</title>
   <style>
     body {
+      background: pink url('https://www.transparenttextures.com/patterns/hearts.png');
+      background-size: cover;
+      color: #660033;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 1.2rem;
+      text-align: center;
       margin: 0;
-      padding: 0;
-      background: #ffe6f0;
-      font-family: 'Segoe UI', sans-serif;
-      color: #99004d;
-      overflow: hidden;
-    }
-
-    .container {
+      padding: 2rem 1rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
       height: 100vh;
-      text-align: center;
-      padding: 30px;
     }
-
-    h1 {
-      font-size: 1.8em;
-      line-height: 1.8;
-      animation: fadeIn 1.2s ease-in-out;
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 15px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
     }
-
     button {
-      margin-top: 30px;
-      padding: 12px 28px;
-      background-color: #ff3385;
-      color: white;
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      background-color: #ff69b4;
       border: none;
-      border-radius: 25px;
-      font-size: 1em;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
       cursor: pointer;
-      transition: 0.3s ease;
     }
-
     button:hover {
-      background-color: #cc005f;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: fixed;
-      width: 15px;
-      height: 15px;
-      background: red;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
-      animation: float 8s linear infinite;
-    }
-
-    .heart::before,
-    .heart::after {
-      content: "";
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: red;
-      border-radius: 50%;
-    }
-
-    .heart::before {
-      top: -8px;
-      left: 0;
-    }
-
-    .heart::after {
-      left: -8px;
-      top: 0;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) rotate(45deg);
-        opacity: 0;
-      }
+      background-color: #ff1493;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <p id="loveText">Jeuti k kio bhl lage 💕</p>
+    <button onclick="nextPage()">Next</button>
+  </div>
 
-<div class="container">
-  <h1 id="text">Jeuti k kio bhl lage</h1>
-  <button onclick="nextText()">Next</button>
-</div>
+  <!-- Music -->
+  <audio id="bg-music" autoplay loop>
+    <source src="upohar.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
 
-<!-- Floating hearts animation -->
-<script>
-  for (let i = 0; i < 25; i++) {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (4 + Math.random() * 6) + "s";
-    heart.style.opacity = Math.random();
-    heart.style.transform = `rotate(45deg) scale(${0.6 + Math.random()})`;
-    document.body.appendChild(heart);
-  }
+  <!-- Play music after user click -->
+  <script>
+    document.addEventListener("click", () => {
+      const audio = document.getElementById("bg-music");
+      if (audio.paused) audio.play();
+    });
 
-  const messages = [
-    "tai muk din tu xuni thakibo pare muk bak bak bur mon di xune",
-    "Tai cute hoi, ekdam mur. Jaar hath t hath dhori, hug kori, gutei problems pahora mon.",
-    "Tai khana dhuniya bonai, ru moi khai bhal pau. Sinta nokoriba, duita ye ekeloge bonam. Baa moi bonam, tumar bhagor lagile. But tair htor khana khua mon bahut.",
-    "Tai logot kotha pati thakile, xomoi tu jen rokhi jai; mon tu jen bhal lagi jai.",
-    "Tair trust issues ase, ru seitu jikibo ye sai asu — ru jikimei.",
-    "Tai full wife material. Maa k r iman sohai, ghar r sob kaam, ki lage oo. Biya khn hua hoi ye best asil. Roba 'Yes' tu kouk!",
-    "I don’t know why she’s insecure, but in my eyes, she is the most beautiful woman I’ve ever come across. For me, she will always be the one — like a deer with eyes full of magic.",
-    "Seidina alp kotha patilu. Kintu sei bhir r majot, u just taik xunibo mon goisil. Tair hahi tu anoborote rakhibo mon goisil. Bahut dhuniya hahe — ru sokupani mur sabo mon ni.",
-    "I want to be hers. Don’t know when or how — but she is just... perfect. 💓",
-    "What I truly desire is this—when she's in my arms like a sleepy little panda, her messy hair brushing softly, I just hold her tight... look deep into her eyes and feel the silence. I slowly kiss her forehead, then her nose, her cheeks—and in that moment, I just want time to stop, so I can keep living in that memory forever.",
-    "Nejanu ketia ekeloge ahim bisaru bahut. Ketia janu log paam, usarat thakibo bisaru bahut. Xunkale ahiba, na log dhoriba. Xomporko godhiba. Imn xini kotha t kobat beya pale — sorry haan. Just tumar smile tu bisaru. Hurt koribo ketia u mon ni."
-  ];
+    const messages = [
+      "tai muk din tu xuni thakibo pare muk bak bak bur mon di xune",
+      "Tai cute hoi ,ekdam mur , jaar hath t hath dhori hug kori gutei problems pahora mon",
+      "tai khana dhuniya bonai ,ru moi khai bhl pau ,sinta nokoriba duita ye ekeloge bonam baa moi bonam tumar bhagor lagile but tair htor khana khua mon bahut",
+      "tai logot kotha pati thakile xomoi tu jen rokhi jai mon tu jen bhl lagi jai",
+      "tair trust issues ase ,ru seitu jikibo ye sai asu ru jikimei",
+      "tai full wife material ,maa k r imn sohai ,ghar r sob kaam ,ki lage oo ,biya khn hua hoi ye best asil ,roba yes tu kouk",
+      "idk why she is insecure but in my eyes she is the most beautiful woman I ever came across, ooo horin r nisina ye soku",
+      "Seidina alp kotha patilu kintu sei bhir r majot u just taik xunibo mon goisil tair hahi tu anoborote rakhibo mon goisil ,bahut dhuniya hahe ru sokupani mur sabo mon ni",
+      "I want to be hers, don't know the time but she is just perfect 💓",
+      "What I basically want: when she is in my arms like a sleepy cute panda, messy hair, I just hug her tightly, look straight into her eyes and feel the silence. I slowly plant a kiss on her forehead, her nose, her cheeks — and wish time would stop to capture that moment.",
+      "nejanu ketia ekeloge ahim bisaru bahut, ketia janu log paam, usarat thakibo bisaru bahutt, xunkale ahiba na log dhoriba, xomporko godhiba, imn xini kotha t kobat beya pale sorry haan just tumar smile tu bisaru hurt koribo ketia u mon ni"
+    ];
 
-  let i = 0;
-  function nextText() {
-    if (i < messages.length) {
-      document.getElementById("text").innerText = messages[i];
-      i++;
-    } else {
-      document.querySelector("button").style.display = "none";
+    let index = 0;
+    function nextPage() {
+      index++;
+      if (index < messages.length) {
+        document.getElementById("loveText").innerText = messages[index];
+      } else {
+        document.getElementById("loveText").innerText = "That's it 💖. Love you Jeuti.";
+        document.querySelector("button").style.display = "none";
+      }
     }
-  }
-</script>
-
-<!-- Background Music (autoplay and loop) -->
-<audio autoplay loop>
-  <source src="https://limewire.com/d/VPIlo#3fOvhDbbmR" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
+  </script>
 </body>
 </html>
+
